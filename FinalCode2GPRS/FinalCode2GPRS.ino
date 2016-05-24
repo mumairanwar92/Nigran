@@ -1,5 +1,4 @@
 #include <SPI.h>
-#include <string.h>
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Declarations for String Fuctions to be used in HTTP section
 String mainquery, querystring;
@@ -23,7 +22,7 @@ unsigned long lowpulseoccupancy = 0;
 float ratio = 0;
 float concentration = 0;
 int temp = 20; 
-//int i=0;
+int i=0;
 float ppmv;
 short mg;
 
@@ -37,7 +36,6 @@ int limit=0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Decation for DHT11
 #include <DHT.h>
-#include "DHT.h"
 #define DHT11_PIN 6
 #define DHTTYPE DHT11
 DHT dht(DHT11_PIN,DHTTYPE);
@@ -75,6 +73,12 @@ void setup()
   mainquery = String("AT+HTTPPARA=\"URL\",\"http://3c5688f3.ngrok.io/server");
   querystring = String();
   querystring += (mainquery);
+  
+  Serial.println("Starting...");
+//  powerOn();
+  while (sendATcommand("AT", "OK", 1000) == 0);
+  sendATcommand("", "Call Ready", 5000);
+  Serial.println("Done");
   setupGPRS();
 }
 
@@ -260,6 +264,7 @@ void setupGPRS()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Power ON/OFF
+/*
 void powerOn()
 {
   digitalWrite(onModulePin, LOW);
@@ -274,4 +279,4 @@ void powerDown()
 {
   sendATcommand("AT+CPOWD=1", "NORMAL POWER DOWN", 5000);
 }
-
+*/

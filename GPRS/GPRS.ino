@@ -38,7 +38,7 @@ void setup()
   while (sendATcommand("AT", "OK", 1000) == 0);
   sendATcommand("", "Call Ready", 5000);
   Serial.println("Done");
-  //setupGPRS();
+  setupGPRS();
 }
 
 /*---------------------------------------*/
