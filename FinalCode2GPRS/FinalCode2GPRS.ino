@@ -264,7 +264,7 @@ void setupGPRS()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Power ON/OFF
-
+/*
 void powerOn()
 {
   digitalWrite(onModulePin, LOW);
@@ -279,19 +279,4 @@ void powerDown()
 {
   sendATcommand("AT+CPOWD=1", "NORMAL POWER DOWN", 5000);
 }
-
-void powerOn()
-{
-  digitalWrite(onModulePin, LOW);
-  delay(1000);
-  digitalWrite(onModulePin, HIGH);
-  delay(2000);
-  digitalWrite(onModulePin, LOW);
-  delay(4000);
-}
-
-void powerDown()
-{
-  sendATcommand("AT+CPOWD=1", "NORMAL POWER DOWN", 5000);
-}
-
+*/
